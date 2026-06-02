@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - QuestTik</title>
+    <link rel="stylesheet" href="assets/css/game.css?v=20260601-sidebar1" />
+  </head>
+  <body>
+    <div class="sky-layer" aria-hidden="true">
+      <span class="px-cloud c1"></span>
+      <span class="px-cloud c2"></span>
+      <span class="px-cloud c3"></span>
+      <span class="px-hill h1"></span>
+      <span class="px-hill h2"></span>
+      <span class="px-bush b1"></span>
+      <span class="px-bush b2"></span>
+      <span class="sky-pipe"></span>
+      <span class="sky-block-row"></span>
+      <span class="sky-coin coin-a"></span>
+      <span class="sky-coin coin-b"></span>
+      <span class="sky-star star-a"></span>
+      <span class="sky-star star-b"></span>
+    </div>
+
+    <main class="screen app-layout active standalone-dashboard">
+      <aside class="profile-sidebar">
+        <div class="sidebar-brand">
+          <div class="logo-badge small brand-logo">
+            <img src="assets/brand/questtik-logo.png" alt="QuestTik" />
+          </div>
+          <div class="brand-copy">
+            <strong>QuestTik</strong>
+            <span>Learning Quest</span>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn" type="button" aria-label="Buka tutup menu" aria-expanded="true">...</button>
+        </div>
+
+        <section class="side-panel nav-panel">
+          <a class="is-active" href="dashboard.html"><span class="nav-icon dashboard-icon" aria-hidden="true"></span><span class="nav-label">Dashboard</span></a>
+          <a href="index.html#world"><span class="nav-icon map-icon" aria-hidden="true"></span><span class="nav-label">World Map</span></a>
+          <a href="index.html#mentor"><span class="nav-icon mentor-icon" aria-hidden="true"></span><span class="nav-label">Mentor AI</span></a>
+          <a href="index.html#profile"><span class="nav-icon profile-icon" aria-hidden="true"></span><span class="nav-label">Profil</span></a>
+        </section>
+      </aside>
+
+      <section class="game-content">
+        <header class="content-header">
+          <div>
+            <h1>Pusat Progres</h1>
+          </div>
+          <div class="header-actions">
+            <a class="ghost-btn" href="index.html">Masuk Game</a>
+          </div>
+        </header>
+
+        <section class="view active dashboard-page">
+          <article class="dashboard-hero">
+            <div class="dashboard-hero-copy">
+              <h2 id="dashboardGreeting">Halo, Petualang!</h2>
+              <p id="dashboardQuestLine">Siapkan energi belajarmu. Quest berikutnya menunggu untuk ditaklukkan.</p>
+              <div class="player-status-row">
+                <div class="player-status-chip">
+                  <span>Level Pemain</span>
+                  <strong id="dashboardLevel">1</strong>
+                </div>
+                <div class="player-status-chip xp">
+                  <span>Total XP</span>
+                  <strong id="dashboardXp">0</strong>
+                </div>
+              </div>
+              <div class="overall-progress-card">
+                <div>
+                  <span>Progress Quest</span>
+                  <strong id="overallProgressText">0%</strong>
+                </div>
+                <div class="overall-progress-track" aria-hidden="true"><span id="overallProgressFill"></span></div>
+              </div>
+              <button class="primary-btn big continue-adventure-btn" id="continueAdventureBtn" type="button">Lanjutkan Petualangan</button>
+            </div>
+            <div class="dashboard-hero-stage" aria-hidden="true">
+              <span class="dash-cloud one"></span>
+              <span class="dash-cloud two"></span>
+              <span class="dash-coin c1"></span>
+              <span class="dash-coin c2"></span>
+              <span class="dash-star s1"></span>
+              <span class="dash-star s2"></span>
+              <span class="dash-avatar" id="dashboardAvatar"></span>
+              <span class="dash-companion"></span>
+              <span class="dash-pipe"></span>
+              <span class="dash-ground"></span>
+            </div>
+          </article>
+
+          <section class="dashboard-stat-grid" id="dashboardCards" aria-label="Statistik pemain"></section>
+
+          <section class="dashboard-lower-grid">
+            <article class="dashboard-panel latest-badge-panel">
+              <div class="section-title-row">
+                <div>
+                  <span class="eyebrow">Reward</span>
+                  <h2>Badge Terbaru</h2>
+                </div>
+                <span class="pixel-spark" aria-hidden="true"></span>
+              </div>
+              <div class="latest-badges" id="latestBadges"></div>
+            </article>
+
+            <article class="dashboard-panel mentor-dashboard-panel">
+              <div class="section-title-row">
+                <div>
+                  <span class="eyebrow">Mentor AI</span>
+                  <h2>Rekomendasi Belajar</h2>
+                </div>
+                <div class="mentor-orb small">AI</div>
+              </div>
+              <div class="mentor-recommendation" id="mentorRecommendation"></div>
+              <div class="mentor-activity" id="mentorActivity"></div>
+              <a class="ghost-btn" href="index.html#mentor">Buka Mentor AI</a>
+            </article>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      document.querySelector("#sidebarToggleBtn")?.addEventListener("click", () => {
+        const shell = document.querySelector(".app-layout");
+        const collapsed = !shell.classList.contains("sidebar-collapsed");
+        shell.classList.toggle("sidebar-collapsed", collapsed);
+        document.querySelector("#sidebarToggleBtn").setAttribute("aria-expanded", collapsed ? "false" : "true");
+      });
+    </script>
+    <script src="assets/js/dashboard.js?v=20260601-sidebar1"></script>
+  </body>
+</html>

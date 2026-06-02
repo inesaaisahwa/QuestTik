@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuestTik</title>
+    <link rel="stylesheet" href="assets/css/game.css?v=20260602-minisidebar1" />
+  </head>
+  <body>
+    <div class="sky-layer" aria-hidden="true">
+      <span class="px-cloud c1"></span>
+      <span class="px-cloud c2"></span>
+      <span class="px-cloud c3"></span>
+      <span class="px-hill h1"></span>
+      <span class="px-hill h2"></span>
+      <span class="px-bush b1"></span>
+      <span class="px-bush b2"></span>
+      <span class="sky-pipe"></span>
+      <span class="sky-block-row"></span>
+      <span class="sky-coin coin-a"></span>
+      <span class="sky-coin coin-b"></span>
+      <span class="sky-star star-a"></span>
+      <span class="sky-star star-b"></span>
+      <span class="ground-strip"></span>
+    </div>
+
+    <main class="screen active landing-screen" id="landingScreen">
+      <nav class="landing-nav">
+        <div class="logo-badge brand-logo">
+          <img src="assets/brand/questtik-logo.png" alt="QuestTik" />
+        </div>
+        <div class="nav-actions">
+          <button class="ghost-btn" data-open-auth="login" type="button">Login</button>
+          <button class="primary-btn" data-open-auth="register" type="button">Register</button>
+        </div>
+      </nav>
+
+      <section class="hero-game">
+        <div class="hero-copy">
+          <span class="eyebrow">Edugame Informatika SMK</span>
+          <h1>Jelajahi dunia kode, data, jaringan, dan AI.</h1>
+          <p>QuestTik adalah sebuah Platform Game Edukasi Berbasis Artificial Intelligence untuk membantu Siswa dalam Mempelajai Bidang Informatika.</p>
+          <div class="hero-actions">
+            <button class="primary-btn big" data-open-auth="register" type="button">Mulai Petualangan</button>
+            <button class="ghost-btn big" id="guestBtn" type="button">Coba sebagai Guest</button>
+          </div>
+        </div>
+        <div class="hero-stage" aria-hidden="true">
+          <span class="px-cloud hero-cloud one"></span>
+          <span class="px-cloud hero-cloud two"></span>
+          <div class="title-board">
+            <span>QuestTik</span>
+            <strong>FUN LEARNING</strong>
+          </div>
+          <div class="floating-bricks left">
+            <span class="brick-block"></span>
+            <span class="mystery-block">?</span>
+            <span class="brick-block"></span>
+          </div>
+          <div class="floating-bricks right">
+            <span class="brick-block"></span>
+            <span class="mystery-block">?</span>
+            <span class="brick-block"></span>
+          </div>
+          <span class="pixel-coin coin1"></span>
+          <span class="pixel-coin coin2"></span>
+          <span class="pixel-coin coin3"></span>
+          <span class="pixel-star star1"></span>
+          <span class="pixel-star star2"></span>
+          <span class="px-hill hero-hill left"></span>
+          <span class="px-hill hero-hill right"></span>
+          <div class="pixel-pipe small-pipe"></div>
+          <div class="pixel-pipe tall-pipe"></div>
+          <div class="pixel-avatar-runner"></div>
+          <div class="pixel-enemy e1"></div>
+          <div class="pixel-enemy e2"></div>
+          <div class="pixel-ground"></div>
+        </div>
+      </section>
+    </main>
+
+    <main class="screen app-layout" id="appScreen">
+      <aside class="profile-sidebar">
+        <div class="sidebar-brand">
+          <div class="logo-badge small brand-logo">
+            <img src="assets/brand/questtik-logo.png" alt="QuestTik" />
+          </div>
+          <div class="brand-copy">
+            <strong>QuestTik</strong>
+            <span>Learning Quest</span>
+          </div>
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" type="button" aria-label="Tutup sidebar" aria-expanded="true">&gt;</button>
+
+        <section class="side-panel nav-panel">
+          <button data-view="dashboard" type="button"><span class="nav-icon dashboard-icon" aria-hidden="true"></span><span class="nav-label">Dashboard</span></button>
+          <button data-view="world" type="button"><span class="nav-icon map-icon" aria-hidden="true"></span><span class="nav-label">World Map</span></button>
+          <button data-view="mentor" type="button"><span class="nav-icon mentor-icon" aria-hidden="true"></span><span class="nav-label">Mentor AI</span></button>
+          <button data-view="profile" type="button"><span class="nav-icon profile-icon" aria-hidden="true"></span><span class="nav-label">Profil</span></button>
+        </section>
+      </aside>
+
+      <section class="game-content">
+        <header class="content-header">
+          <button class="back-btn icon-back-btn" id="backBtn" type="button" aria-label="Kembali">&larr;</button>
+          <div>
+            <span class="eyebrow" id="viewEyebrow" hidden>Dashboard</span>
+            <h1 id="viewTitle">Pusat Progres</h1>
+          </div>
+        </header>
+
+        <section class="view active dashboard-page" id="dashboardView">
+          <article class="dashboard-hero">
+            <div class="dashboard-hero-copy">
+              <h2 id="dashboardGreeting">Halo, Petualang!</h2>
+              <p id="dashboardQuestLine">Siapkan energi belajarmu. Quest berikutnya menunggu untuk ditaklukkan.</p>
+              <div class="player-status-row">
+                <div class="player-status-chip">
+                  <span>Level Pemain</span>
+                  <strong id="dashboardLevel">1</strong>
+                </div>
+                <div class="player-status-chip xp">
+                  <span>Total XP</span>
+                  <strong id="dashboardXp">0</strong>
+                </div>
+              </div>
+              <div class="overall-progress-card">
+                <div>
+                  <span>Progress Quest</span>
+                  <strong id="overallProgressText">0%</strong>
+                </div>
+                <div class="overall-progress-track" aria-hidden="true"><span id="overallProgressFill"></span></div>
+              </div>
+              <button class="primary-btn big continue-adventure-btn" id="continueAdventureBtn" type="button">Lanjutkan Petualangan</button>
+            </div>
+            <div class="dashboard-hero-stage" aria-hidden="true">
+              <span class="dash-cloud one"></span>
+              <span class="dash-cloud two"></span>
+              <span class="dash-coin c1"></span>
+              <span class="dash-coin c2"></span>
+              <span class="dash-star s1"></span>
+              <span class="dash-star s2"></span>
+              <span class="dash-avatar" id="dashboardAvatar"></span>
+              <span class="dash-companion"></span>
+              <span class="dash-pipe"></span>
+              <span class="dash-ground"></span>
+            </div>
+          </article>
+
+          <section class="dashboard-stat-grid" id="dashboardCards" aria-label="Statistik pemain"></section>
+
+          <section class="dashboard-lower-grid">
+            <article class="dashboard-panel latest-badge-panel">
+              <div class="section-title-row">
+                <div>
+                  <span class="eyebrow">Reward</span>
+                  <h2>Badge Terbaru</h2>
+                </div>
+                <span class="pixel-spark" aria-hidden="true"></span>
+              </div>
+              <div class="latest-badges" id="latestBadges"></div>
+            </article>
+
+            <article class="dashboard-panel mentor-dashboard-panel">
+              <div class="section-title-row">
+                <div>
+                  <span class="eyebrow">Mentor AI</span>
+                  <h2>Rekomendasi Belajar</h2>
+                </div>
+                <div class="mentor-orb small">AI</div>
+              </div>
+              <div class="mentor-recommendation" id="mentorRecommendation"></div>
+              <div class="mentor-activity" id="mentorActivity"></div>
+              <button class="ghost-btn" data-view="mentor" type="button">Buka Mentor AI</button>
+            </article>
+          </section>
+        </section>
+
+        <section class="view world-map-page" id="worldView">
+          <article class="world-map-board">
+            <div class="world-map-head">
+              <span class="eyebrow">Quest Map</span>
+              <h2>Pilih world tujuanmu</h2>
+              <p>Setiap world punya tema, quest, materi, dan badge berbeda. Selesaikan world sebelumnya untuk membuka jalur berikutnya.</p>
+            </div>
+            <div class="world-map" id="worldMap"></div>
+          </article>
+        </section>
+
+        <section class="view" id="adventureView">
+          <article class="world-stage" id="worldStage">
+            <div class="world-ambience" id="worldAmbience" aria-hidden="true"></div>
+            <div class="world-hud">
+              <div><span>XP</span><strong id="hudXp">0</strong></div>
+              <div><span>Coin</span><strong id="hudCoins">0</strong></div>
+              <div><span>Badge</span><strong id="hudBadge">0</strong></div>
+              <div><span>Progress</span><strong id="hudProgress">0/0</strong></div>
+              <div class="heart-meter" id="hudHearts"><span></span><span></span><span></span></div>
+            </div>
+            <div class="world-hero-panel">
+              <span class="eyebrow" id="worldStageLabel">World 1</span>
+              <h2 id="worldStageTitle">Jungle Logic</h2>
+              <p id="worldStageMission">Siapkan quest pertamamu.</p>
+              <div class="world-actions">
+                <button class="primary-btn" id="startQuestBtn" type="button">Mulai Quiz</button>
+                <button class="ghost-btn" id="continueQuestBtn" type="button">Lanjutkan Quest</button>
+                <button class="ghost-btn" id="openMaterialBtn" type="button">Buka Materi</button>
+                <button class="ghost-btn" id="rewardBtn" type="button">Lihat Reward</button>
+                <button class="primary-btn next-world-btn" id="nextWorldBtn" type="button">Next World</button>
+              </div>
+            </div>
+            <div class="npc-dialog" id="npcDialog">
+              <strong id="npcName">Mentor Pixel</strong>
+              <p id="npcLine">Pilih quest dan kumpulkan XP. Setiap world punya 3 nyawa; nyawa akan reset saat world baru terbuka.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" id="materialView">
+          <article class="level-material" id="levelMaterial"></article>
+        </section>
+
+        <section class="view" id="quizView">
+          <div class="quiz-layout">
+            <div class="quiz-reward-fx" id="quizRewardFx" aria-hidden="true"></div>
+            <article class="quiz-card">
+              <div class="quiz-ornaments" aria-hidden="true"></div>
+              <div class="question-head">
+                <span id="questionMeta">Level 1</span>
+                <span id="questionType">Konsep</span>
+                <div class="heart-meter quiz-heart-meter" id="quizHearts" aria-label="Sisa nyawa"><span></span><span></span><span></span></div>
+              </div>
+              <h2 id="questionText">Pertanyaan</h2>
+              <div class="choice-list" id="choiceList"></div>
+              <div class="action-row">
+                <button class="ghost-btn" id="hintBtn" type="button">Hint AI</button>
+                <button class="primary-btn" id="submitBtn" type="button" disabled>Pilih Jawaban Dulu</button>
+              </div>
+            </article>
+            <aside class="mentor-card">
+              <div class="mentor-orb">AI</div>
+              <h2>AI Mentor</h2>
+              <p id="mentorText">Pilih jawaban terbaik, lalu mentor akan memberi penjelasan lengkap.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="resultView">
+          <article class="result-card" id="resultCard">
+            <div class="score-ring" id="scoreRing"><span id="scoreValue">0</span></div>
+            <div>
+              <span class="eyebrow" id="resultStatus">Hasil</span>
+              <div class="heart-meter result-heart-meter" id="resultHearts" aria-label="Sisa nyawa"><span></span><span></span><span></span></div>
+              <h2 id="resultTitle">Evaluasi Jawaban</h2>
+              <p id="resultFeedback"></p>
+              <div class="answer-review" id="answerReview"></div>
+              <div class="mentor-explanation" id="mentorExplanation"></div>
+              <div class="action-row">
+                <button class="ghost-btn" id="retryBtn" type="button">Coba Lagi</button>
+                <button class="primary-btn" id="nextBtn" type="button">Lanjut</button>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" id="mentorView">
+          <article class="mentor-chat">
+            <header class="mentor-chat-head">
+              <div class="mentor-chat-title">
+                <div class="mentor-orb">AI</div>
+                <div>
+                  <span class="eyebrow">Mentor AI</span>
+                  <h2>Tanya Mentor Informatika</h2>
+                  <p>Diskusi materi, minta contoh, atau tanyakan strategi menyelesaikan quest.</p>
+                </div>
+              </div>
+              <button class="ghost-btn mentor-reset-btn" id="mentorChatResetBtn" type="button">Reset Percakapan</button>
+            </header>
+            <div class="mentor-chat-log" id="mentorChatLog">
+              <div class="chat-bubble ai">Halo, aku Mentor AI QuestTik. Apa yang ingin kamu tanyakan?</div>
+            </div>
+            <form class="mentor-chat-form" id="mentorChatForm">
+              <input id="mentorChatInput" type="text" placeholder="apa yang ingin kamu tanyakan" autocomplete="off" />
+              <button class="primary-btn" type="submit">Kirim</button>
+            </form>
+          </article>
+        </section>
+
+        <section class="view" id="profileView">
+          <div class="panel">
+            <h2>Profil & Pencapaian</h2>
+            <section class="profile-editor-panel" id="profileEditorPanel">
+              <div class="section-title-row">
+                <div>
+                  <span class="eyebrow">Profil Pemain</span>
+                  <h2>Profil Pemain</h2>
+                </div>
+                <button class="ghost-btn music-toggle" id="musicToggleBtn" type="button" aria-pressed="false">Musik: Off</button>
+              </div>
+              <div class="profile-identity-view" id="profileIdentityView">
+                <div class="avatar-medal" id="profileAvatar">MS</div>
+                <div class="profile-identity-main">
+                  <h2 id="profileName">Guest</h2>
+                  <p id="profileEmail">Mode latihan</p>
+                  <div class="profile-identity-list">
+                    <div><span>Nama</span><strong id="profileSummaryName">Guest</strong></div>
+                    <div><span>Username</span><strong id="profileSummaryUsername">guest</strong></div>
+                    <div><span>Email</span><strong id="profileSummaryEmail">Mode latihan</strong></div>
+                  </div>
+                </div>
+                <button class="primary-btn" id="editProfileBtn" type="button">Edit Profil</button>
+              </div>
+              <form class="profile-edit-form" id="profileEditForm" novalidate hidden>
+                <label><span>Nama</span><input id="profileNameInput" type="text" autocomplete="name" /></label>
+                <label><span>Username</span><input id="profileUsernameInput" type="text" autocomplete="username" /></label>
+                <label><span>Email</span><input id="profileEmailInput" type="email" autocomplete="email" /></label>
+                <div class="profile-photo-field">
+                  <label><span>Foto Profil</span><input id="profilePhotoInput" type="file" accept="image/png,image/jpeg,image/webp" /></label>
+                  <button class="ghost-btn" id="removeProfilePhotoBtn" type="button">Hapus Foto</button>
+                </div>
+                <div class="profile-edit-actions">
+                  <button class="primary-btn" type="submit">Simpan Profil</button>
+                  <button class="ghost-btn" id="cancelProfileEditBtn" type="button">Batal</button>
+                </div>
+              </form>
+              <div class="profile-form-status" id="profileFormStatus" aria-live="polite"></div>
+            </section>
+            <section class="side-panel inline-stats">
+              <h3>Dasbor Progress</h3>
+              <div class="stat-stack">
+                <div><span>XP</span><strong id="xpValue">0</strong></div>
+                <div><span>Level Aktif</span><strong id="levelValue">1</strong></div>
+                <div><span>Akurasi</span><strong id="accuracyValue">0%</strong></div>
+                <div><span>Badge</span><strong id="badgeValue">0</strong></div>
+              </div>
+            </section>
+            <section class="side-panel inline-stats">
+              <div class="section-title-row compact">
+                <h3>Progress Pencapaian</h3>
+                <button class="ghost-btn small-btn" id="openBadgeLibraryBtn" type="button">Lihat Selengkapnya</button>
+              </div>
+              <div class="achievement-track" id="achievementTrack"></div>
+            </section>
+            <section class="achievement-notice" id="achievementNotice">
+              <span class="eyebrow">Info Pencapaian</span>
+              <h3>Pilih badge world</h3>
+              <p>Klik badge pencapaian untuk melihat ulasan tiap world.</p>
+            </section>
+            <div id="profileDetail"></div>
+            <section class="learning-report-panel" id="learningReportPanel">
+              <div>
+                <span class="eyebrow">Cetak Hasil Pembelajaran</span>
+                <h3>Laporan Progress QuestTik</h3>
+                <p>Isi kelas dan sekolah, lalu buat laporan PDF untuk bukti pembelajaran.</p>
+              </div>
+              <div class="report-summary-view" id="reportSummaryView">
+                <div class="report-summary-list">
+                  <div><span>Kelas</span><strong id="reportSummaryClass">Belum diisi</strong></div>
+                  <div><span>Sekolah</span><strong id="reportSummarySchool">Belum diisi</strong></div>
+                </div>
+                <button class="ghost-btn" id="editReportBtn" type="button">Edit Data Laporan</button>
+              </div>
+              <div class="report-edit-panel" id="reportEditPanel" hidden>
+                <div class="report-fields">
+                  <label><span>Kelas</span><input id="reportClass" type="text" placeholder="contoh: XI RPL 1" autocomplete="organization-title" /></label>
+                  <label><span>Sekolah</span><input id="reportSchool" type="text" placeholder="contoh: SMK Negeri 1" autocomplete="organization" /></label>
+                </div>
+                <div class="report-edit-actions">
+                  <button class="primary-btn" id="saveReportInfoBtn" type="button">Simpan Data</button>
+                  <button class="ghost-btn" id="cancelReportEditBtn" type="button">Batal</button>
+                </div>
+              </div>
+              <div class="report-actions">
+                <button class="primary-btn" id="reportDownloadBtn" type="button">Cetak Laporan</button>
+                <button class="ghost-btn" id="reportPreviewBtn" type="button">Preview PDF</button>
+                <button class="ghost-btn" id="reportPrintBtn" type="button">Print Langsung</button>
+              </div>
+              <div class="report-status" id="reportStatus" aria-live="polite"></div>
+            </section>
+            <section class="reset-progress-panel">
+              <div>
+                <span class="eyebrow">Reset Progress</span>
+                <h3>Mulai ulang dari awal</h3>
+                <p>XP, jawaban, badge, dan level terbuka akan kembali ke kondisi awal.</p>
+              </div>
+              <button class="ghost-btn danger-btn" id="resetProgressBtn" type="button">Reset Progress</button>
+              <div class="profile-form-status" id="resetProgressStatus" aria-live="polite"></div>
+            </section>
+            <section class="profile-logout-panel">
+              <div>
+                <span class="eyebrow">Logout</span>
+                <h3>Keluar dari akun</h3>
+                <p>Sesi akun akan ditutup. Progress, foto profil, dan riwayat yang sudah tersimpan tetap aman.</p>
+              </div>
+              <button class="ghost-btn danger-btn profile-logout-btn" id="logoutProfileBtn" type="button">Logout</button>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="badgesView">
+          <article class="badge-library-panel">
+            <div class="section-title-row">
+              <div>
+                <span class="eyebrow">Badge Library</span>
+                <h2>Semua Pencapaian QuestTik</h2>
+              </div>
+            </div>
+            <label class="badge-search-field">
+              <span>Cari Badge</span>
+              <input id="badgeSearchInput" type="search" placeholder="Cari nama badge atau world" autocomplete="off" />
+            </label>
+            <div class="badge-library-grid" id="badgeLibraryGrid"></div>
+            <section class="achievement-notice" id="badgeLibraryNotice">
+              <span class="eyebrow">Info Pencapaian</span>
+              <h3>Pilih badge</h3>
+              <p>Klik salah satu badge untuk melihat status, materi, dan akurasi level tersebut.</p>
+            </section>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <div class="report-loading" id="reportLoading" hidden>
+      <div class="report-loading-card">
+        <span class="pixel-loader" aria-hidden="true"></span>
+        <strong>Creating report...</strong>
+        <div class="report-loading-track"><span></span></div>
+      </div>
+    </div>
+
+    <dialog class="game-confirm-dialog" id="resetProgressDialog">
+      <form class="game-confirm-card" method="dialog">
+        <span class="pixel-spark" aria-hidden="true"></span>
+        <span class="eyebrow">Reset Progress</span>
+        <h2>Mulai ulang petualangan?</h2>
+        <p>XP, jawaban, badge, dan level terbuka akan kembali ke awal. Data profil dan foto tetap aman.</p>
+        <div class="game-confirm-actions">
+          <button class="ghost-btn" id="cancelResetProgressBtn" value="cancel" type="button">Batal</button>
+          <button class="primary-btn danger-btn" id="confirmResetProgressBtn" value="confirm" type="button">Ya, Reset</button>
+        </div>
+      </form>
+    </dialog>
+
+    <aside class="material-drawer" id="materialDrawer" aria-hidden="true">
+      <button class="close-btn" id="closeMaterialBtn" type="button">&times;</button>
+      <span class="eyebrow" id="drawerWorldLabel">Materi</span>
+      <h2 id="drawerTitle">Ringkasan Materi</h2>
+      <div class="drawer-scroll" id="drawerContent"></div>
+    </aside>
+
+    <dialog class="auth-dialog" id="authDialog">
+      <form class="auth-card" id="authForm" data-auth-mode="login">
+        <button class="close-btn" id="closeAuthBtn" type="button">&times;</button>
+        <span class="eyebrow" id="authModeLabel">Login</span>
+        <h2 id="authTitle">Masuk ke Quest</h2>
+        <label class="register-only" id="nameField" hidden><span>Nama Tampilan</span><input id="authName" type="text" autocomplete="name" /></label>
+        <label><span id="authIdentityLabel">Username</span><input id="authEmail" type="text" autocomplete="username" required /></label>
+        <label class="register-only" id="emailField" hidden><span>Email</span><input id="authRegisterEmail" type="email" autocomplete="email" /></label>
+        <label><span>Password</span><input id="authPassword" type="password" autocomplete="current-password" required /></label>
+        <div class="avatar-field register-only" id="avatarField" hidden>
+          <span>Pilih Avatar</span>
+          <select id="authAvatar" hidden></select>
+          <div class="avatar-picker" id="avatarPicker"></div>
+        </div>
+        <button class="primary-btn" type="submit" id="authSubmitBtn">Login</button>
+        <p id="authMessage"></p>
+      </form>
+    </dialog>
+
+    <script src="assets/js/jspdf.umd.min.js"></script>
+    <script src="assets/js/game.js?v=20260602-deploymsg1"></script>
+  </body>
+</html>

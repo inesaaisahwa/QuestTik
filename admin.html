@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Konten - QuestTik</title>
+    <link rel="stylesheet" href="assets/css/system.css" />
+  </head>
+  <body>
+    <main class="page-shell" id="adminLoginShell">
+      <section class="admin-login-card">
+        <span class="eyebrow">Admin Only</span>
+        <h1>Login Admin QuestTik</h1>
+        <p>Masuk sebagai admin untuk mengelola level, materi, soal, tema world, dan badge.</p>
+        <form id="adminLoginForm" class="editor-form">
+          <label class="span-2"><span>Username</span><input id="adminUsername" type="text" autocomplete="username" required /></label>
+          <label class="span-2"><span>Password</span><input id="adminPassword" type="password" autocomplete="current-password" required /></label>
+          <button class="primary-btn span-2" type="submit">Masuk Admin</button>
+          <p class="span-2" id="adminLoginMessage"></p>
+        </form>
+      </section>
+    </main>
+
+    <main class="page-shell" id="adminAppShell" hidden>
+      <header class="page-header">
+        <div>
+          <span class="eyebrow">Admin</span>
+          <h1>CRUD Level, Materi, Soal, dan Badge</h1>
+        </div>
+        <nav class="top-links">
+          <a href="index.html">Game</a>
+          <a href="materi.html">Materi</a>
+          <a href="dashboard.html">Dashboard</a>
+          <button class="secondary-btn danger" id="adminLogoutBtn" type="button">Logout Admin</button>
+        </nav>
+      </header>
+
+      <section class="admin-layout">
+        <aside class="panel">
+          <div class="section-head">
+            <h2>Level</h2>
+            <button class="secondary-btn" id="newLevelBtn" type="button">Tambah</button>
+          </div>
+          <div class="level-admin-list" id="levelAdminList"></div>
+          <button class="secondary-btn danger" id="resetContentBtn" type="button">Reset Konten Default</button>
+        </aside>
+
+        <section class="panel">
+          <h2>Editor Level & Materi</h2>
+          <form class="editor-form" id="levelForm">
+            <label><span>ID Level</span><input id="levelId" type="number" min="1" required /></label>
+            <label><span>Judul Level</span><input id="levelTitle" type="text" required /></label>
+            <label><span>Fokus</span><input id="levelFocus" type="text" required /></label>
+            <label><span>Badge</span><input id="levelBadge" type="text" required /></label>
+            <label><span>Nama World</span><input id="worldNameInput" type="text" required /></label>
+            <label>
+              <span>Tema World</span>
+              <select id="themeInput">
+                <option value="jungle">Jungle</option>
+                <option value="sky">Sky</option>
+                <option value="ice">Ice</option>
+                <option value="lava">Lava</option>
+                <option value="castle">Castle</option>
+              </select>
+            </label>
+            <label><span>Judul Materi</span><input id="materialTitleInput" type="text" required /></label>
+            <label class="span-2"><span>Poin Materi (1 baris = 1 poin)</span><textarea id="materialPointsInput" rows="6" required></textarea></label>
+            <div class="form-actions span-2">
+              <button class="primary-btn" type="submit">Simpan Level</button>
+              <button class="secondary-btn danger" id="deleteLevelBtn" type="button">Hapus Level</button>
+            </div>
+          </form>
+        </section>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <h2>CRUD Soal</h2>
+            <p id="questionEditorLabel">Pilih level untuk mengelola soal.</p>
+          </div>
+          <button class="secondary-btn" id="newQuestionBtn" type="button">Tambah Soal</button>
+        </div>
+        <form class="editor-form" id="questionForm">
+          <label><span>Tipe Soal</span><input id="questionType" type="text" required /></label>
+          <label><span>Kata Kunci (pisahkan koma)</span><input id="questionKeywords" type="text" required /></label>
+          <label class="span-2"><span>Pertanyaan</span><textarea id="questionPrompt" rows="3" required></textarea></label>
+          <label class="span-2"><span>Jawaban Benar / Ringkasan Materi</span><textarea id="questionCorrect" rows="3" required></textarea></label>
+          <label><span>Opsi Salah 1</span><input id="wrong1" type="text" required /></label>
+          <label><span>Opsi Salah 2</span><input id="wrong2" type="text" required /></label>
+          <label class="span-2"><span>Opsi Salah 3</span><input id="wrong3" type="text" required /></label>
+          <div class="form-actions span-2">
+            <button class="primary-btn" type="submit">Simpan Soal</button>
+            <button class="secondary-btn danger" id="deleteQuestionBtn" type="button">Hapus Soal</button>
+          </div>
+        </form>
+        <div class="question-admin-list" id="questionAdminList"></div>
+      </section>
+    </main>
+
+    <script src="assets/js/admin.js"></script>
+  </body>
+</html>
