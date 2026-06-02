@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+QuestTik.zip
+data/*.sqlite
+data/*.sqlite-journal
